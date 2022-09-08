@@ -20,7 +20,7 @@ export default function Test(){
   return(
     <div>
       <div className="Form">
-        <h2>Username: {usernameRedux}</h2>
+        <h2>Componente Test - Username: {usernameRedux}</h2>
         <div>
           <label id="usuario">Usuario:</label>
           <input

@@ -1,5 +1,8 @@
 import React from "react";
 import { styles } from "./styles";
+import {useDispatch} from "react-redux";
+import {logout} from "../../redux/feature/auth/actions";
+import {useNavigate} from "react-router-dom";
 
 const GuestForm = (props) => {
   const {
@@ -7,9 +10,16 @@ const GuestForm = (props) => {
     handleOnSubmit,
     formValues: { name, phone, email },
   } = props;
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   // Otra forma
   // const { name, phone, email } = formValues
+
+  const handleOnLogout = () => {
+    dispatch(logout());
+    navigate('/');
+  };
 
   return (
     <form onSubmit={(e) => handleOnSubmit(e)} style={styles.formContainer}>
@@ -45,6 +55,7 @@ const GuestForm = (props) => {
           Add Guest
         </button>
         <button onClick={() => props.handleOnClear()}>Clear</button>
+        <button onClick={handleOnLogout}>Logout</button>
       </div>
     </form>
   );

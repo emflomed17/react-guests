@@ -11,6 +11,7 @@ function LoginForm() {
   });
   const authenticationError = useSelector((state) => state.auth.error);
   const isAuthenticated = useSelector((state) => state.auth.isAuthenticated);
+  const isLoading = useSelector((state) => state.auth.isLoading);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -59,7 +60,7 @@ function LoginForm() {
         </div>
         <div style={styles.buttonsContainer}>
           <button id="submit" type="submit">
-            Login
+            { isLoading ? "Loading" : "Login"}
           </button>
           { authenticationError !== '' && <strong>{authenticationError}</strong> }
           {/*{ isAuthenticated && <strong>Valid credentials</strong> }*/}

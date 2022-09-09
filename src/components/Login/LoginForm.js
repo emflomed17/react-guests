@@ -1,5 +1,5 @@
 import { styles } from "../GuestForm/styles";
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { authenticateUser } from "../../redux/feature/auth/actions";
 import { useNavigate } from "react-router-dom";
@@ -26,16 +26,16 @@ function LoginForm() {
     event.preventDefault();
     const credentials = {
       email: formValues.email,
-      password: formValues.password
-    }
+      password: formValues.password,
+    };
     dispatch(authenticateUser(credentials));
-  }
+  };
 
   useEffect(() => {
-    if(isAuthenticated) {
+    if (isAuthenticated) {
       navigate("guests");
     }
-  }, [isAuthenticated]);
+  }, [isAuthenticated, navigate]);
 
   return (
     <div className="main-grid">
@@ -60,9 +60,9 @@ function LoginForm() {
         </div>
         <div style={styles.buttonsContainer}>
           <button id="submit" type="submit">
-            { isLoading ? "Loading" : "Login"}
+            {isLoading ? "Loading" : "Login"}
           </button>
-          { authenticationError !== '' && <strong>{authenticationError}</strong> }
+          {authenticationError !== "" && <strong>{authenticationError}</strong>}
           {/*{ isAuthenticated && <strong>Valid credentials</strong> }*/}
         </div>
       </form>
